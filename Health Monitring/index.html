@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Health Monitoring System</h2>
+        <form method="POST">
+            <label>BP Systolic:</label>
+            <input type="text" name="bp_systolic" required value="{{ input_values.get('bp_systolic', '') }}">
+
+            <label>BP Diastolic:</label>
+            <input type="text" name="bp_diastolic" required value="{{ input_values.get('bp_diastolic', '') }}">
+
+            <label>Sugar Level:</label>
+            <input type="text" name="sugar_level" required value="{{ input_values.get('sugar_level', '') }}">
+
+            <label>Cholesterol:</label>
+            <input type="text" name="cholesterol" required value="{{ input_values.get('cholesterol', '') }}">
+
+            <label>Haemoglobin:</label>
+            <input type="text" name="haemoglobin" required value="{{ input_values.get('haemoglobin', '') }}">
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction is not none %}
+        <div class="result">
+            <h3>Predicted BP Systolic: {{ prediction }}</h3>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
